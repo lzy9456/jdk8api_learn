@@ -7,6 +7,155 @@
     <groupId>learn</groupId>
     <artifactId>jdk8api_learn</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+
+            <!-- 一般maven编译 -->
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-compiler-plugin</artifactId>-->
+<!--                <version>3.7.0</version>-->
+<!--                <configuration>-->
+<!--                    <source>1.8</source>-->
+<!--                    <target>1.8</target>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>compile</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
+
+            <!-- aspectj maven编译插件 -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.11</version>
+
+
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <complianceLevel>1.8</complianceLevel>
+                    <showWeaveInfo/>
+                    <forceAjcCompile>true</forceAjcCompile>
+                    <sources/>
+                    <weaveDirectories>
+                        <weaveDirectory>${project.build.directory}/classes</weaveDirectory>
+                    </weaveDirectories>
+                    <aspectLibraries>
+                    </aspectLibraries>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>compile</goal>       <!-- use this goal to weave all your main classes -->
+                            <goal>test-compile</goal>  <!-- use this goal to weave all your test classes -->
+                        </goals>
+                    </execution>
+                </executions>
+
+
+<!--                <configuration>-->
+<!--                    <complianceLevel>1.8</complianceLevel>-->
+<!--                    <source>1.8</source>-->
+<!--                    <target>1.8</target>-->
+<!--                    <showWeaveInfo>true</showWeaveInfo>-->
+<!--                    <verbose>true</verbose>-->
+<!--                    <Xlint>ignore</Xlint>-->
+<!--                    <encoding>UTF-8</encoding>-->
+
+
+<!--                    &lt;!&ndash; IMPORTANT&ndash;&gt;-->
+<!--                    <excludes>-->
+<!--                        <exclude>**/*.java</exclude>-->
+<!--                    </excludes>-->
+<!--                    <forceAjcCompile>true</forceAjcCompile>-->
+<!--                    <sources/>-->
+<!--                    &lt;!&ndash; IMPORTANT&ndash;&gt;-->
+
+
+<!--                    <aspectLibraries>-->
+<!--                        <aspectLibrary>-->
+<!--                            <groupId>learn</groupId>-->
+<!--                            <artifactId>jdk8api_learn</artifactId>-->
+<!--                        </aspectLibrary>-->
+<!--                    </aspectLibraries>-->
+
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>default-compile</id>-->
+<!--                        <phase>process-classes</phase>-->
+<!--                        <goals>-->
+<!--                            &lt;!&ndash; use this goal to weave all your main classes &ndash;&gt;-->
+<!--                            <goal>compile</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <weaveDirectories>-->
+<!--                                <weaveDirectory>${project.build.directory}/classes</weaveDirectory>-->
+<!--                            </weaveDirectories>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>default-testCompile</id>-->
+<!--                        <phase>process-test-classes</phase>-->
+<!--                        <goals>-->
+<!--                            &lt;!&ndash; use this goal to weave all your test classes &ndash;&gt;-->
+<!--                            <goal>test-compile</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <weaveDirectories>-->
+<!--                                <weaveDirectory>${project.build.directory}/test-classes</weaveDirectory>-->
+<!--                            </weaveDirectories>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+            </plugin>
+        </plugins>
+    </build>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+<!--            <scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>1.9.3</version>
+        </dependency>
+
+        <!-- 日志处理 -->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-log4j12</artifactId>-->
+<!--            <version>1.7.26</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+
+    </dependencies>
 
 
 </project>
